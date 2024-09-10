@@ -6,7 +6,7 @@
 #    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/20 22:20:12 by sbruma            #+#    #+#              #
-#    Updated: 2024/09/10 22:29:41 by marvin           ###   ########.fr        #
+#    Updated: 2024/09/11 00:50:56 by marvin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,10 @@ INC				= 	inc/
 SRC_DIR			= 	src/
 OBJ_DIR			= 	obj/
 	   
-SRC 			= 
+SRC 			= $(SRC_DIR)so_long.c \
+				  $(SRC_DIR)init_map.c \
+				  $(SRC_DIR)init_mlx.c
+				  
 		
 OBJ = $(patsubst $(SRC_DIR)%.c,$(OBJ_DIR)%.o,$(SRC))
 
