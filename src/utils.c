@@ -38,11 +38,14 @@ void player_movement(t_solong *ptr, int current_x, int current_y)
     ptr->map.player_pos.x = current_x;
     ptr->map.player_pos.y = current_y;
     ptr->steps++;
-    // render_map(ptr);
+    map_render(ptr);
 }
 
-void	key_hook(mlx_key_data_t keydata, t_solong *ptr)
+void	key_hook(mlx_key_data_t keydata, void *param)
 {
+    t_solong *ptr;
+
+    ptr = (t_solong *)param;
 	if (keydata.key == MLX_KEY_ESCAPE)
 		mlx_close_window(ptr->mlx);
 	else if (keydata.key == MLX_KEY_UP || keydata.key == MLX_KEY_W)
@@ -53,5 +56,5 @@ void	key_hook(mlx_key_data_t keydata, t_solong *ptr)
         player_movement(ptr, ptr->map.player_pos.x - 1, ptr->map.player_pos.y);
     else if (keydata.key == MLX_KEY_RIGHT || keydata.key == MLX_KEY_D)
         player_movement(ptr, ptr->map.player_pos.x + 1, ptr->map.player_pos.y);
-    return(0);
+    return ;
 }

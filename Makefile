@@ -6,7 +6,7 @@
 #    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/20 22:20:12 by sbruma            #+#    #+#              #
-#    Updated: 2024/09/11 00:50:56 by marvin           ###   ########.fr        #
+#    Updated: 2024/09/11 14:31:32 by marvin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,12 @@ OBJ_DIR			= 	obj/
 	   
 SRC 			= $(SRC_DIR)so_long.c \
 				  $(SRC_DIR)init_map.c \
-				  $(SRC_DIR)init_mlx.c
+				  $(SRC_DIR)init_mlx.c \
+				  $(SRC_DIR)checker_acces.c \
+				  $(SRC_DIR)checker_map.c \
+				  $(SRC_DIR)checker_exist.c \
+				  $(SRC_DIR)map_render.c \
+				  $(SRC_DIR)utils.c
 				  
 		
 OBJ = $(patsubst $(SRC_DIR)%.c,$(OBJ_DIR)%.o,$(SRC))
