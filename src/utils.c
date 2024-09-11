@@ -12,34 +12,23 @@
 
 #include "../inc/so_long.h"
 
-static void check_rows(t_solong *ptr)
+void	error(char *message)
 {
-    size_t i;
-
-    i = 0;
-    while (i < ptr->map.rows)
-    {
-        if (ptr->map.map[i][0] != WALL || ptr->map.map[i][ptr->map.columns - 1] != WALL)
-            error("map is not surrounded by walls\n");
-        i++;
-    }
+	ft_putstr(message);
+	exit(1);
 }
 
-static void check_columns(t_solong *ptr)
+void	key_hook(mlx_key_data_t keydata, t_solong *ptr)
 {
-    size_t i;
-
-    i=0;
-    while(i < ptr->map.columns)
-    {
-        if (ptr->map.map[0][i] != WALL || ptr->map.map[ptr->map.rows - 1][i] != WALL)
-            error("map is not surrounded by walls\n");
-        i++;
-    }
-}
-
-void check_walls(t_solong *ptr)
-{
-    check_rows(ptr);
-    check_columns(ptr);
+	if (keydata.key == MLX_KEY_ESCAPE)
+		mlx_close_window(ptr->mlx);
+	else if (keydata.key == MLX_KEY_UP || keydata.key == MLX_KEY_W)
+        player_movement(ptr, ptr->map.player_pos.x, ptr->map.player_pos.y - 1);
+    else if (keydata.key == MLX_KEY_DOWN || keydata.key == MLX_KEY_S)
+        player_movement(ptr, ptr->map.player_pos.x, ptr->map.player_pos.y + 1);
+    else if (keydata.key == MLX_KEY_LEFT || keydata.key == MLX_KEY_A)
+        player_movement(ptr, ptr->map.player_pos.x - 1, ptr->map.player_pos.y);
+    else if (keydata.key == MLX_KEY_RIGHT || keydata.key == MLX_KEY_D)
+        player_movement(ptr, ptr->map.player_pos.x + 1, ptr->map.player_pos.y);
+    return(0);
 }

@@ -12,8 +12,4 @@
 
 #include "../inc/so_long.h"
 
-void	error(char *message)
-{
-	ft_putstr(message);
-	exit(1);
-}
+
