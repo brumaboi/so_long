@@ -14,10 +14,15 @@
 
 void init_mlx(t_solong *ptr)
 {
-    ptr->mlx = mlx_init(WINDOW_WIDTH, WINDOW_HEIGHT, "so_long", true);
+    int window_width;
+    int window_height;
+
+    window_width = ptr->map.columns * TILE_SIZE;
+    window_height = ptr->map.rows * TILE_SIZE;
+    ptr->mlx = mlx_init(window_width, window_height, "so_long", true);
     if (!ptr->mlx)
         error("mlx_init failed\n");
-    ptr->win = mlx_new_image(ptr->mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
+    ptr->win = mlx_new_image(ptr->mlx, window_width, window_height);
     if (!ptr->win)
         error("mlx_new_window failed\n");
 }

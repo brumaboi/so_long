@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 22:23:10 by sbruma            #+#    #+#             */
-/*   Updated: 2024/09/11 23:05:09 by marvin           ###   ########.fr       */
+/*   Updated: 2024/09/11 23:55:49 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ typedef struct s_map
     int     player;
     t_pos   player_pos;
     int     exit_reachable;
+    int     collectible_reachable;
 }   t_map;
 
 typedef struct s_solong
@@ -78,6 +79,7 @@ void check_access(t_solong *ptr);
 void check_elements(t_solong *ptr);
 void check_walls(t_solong *ptr);
 void check_map(t_solong *ptr);
+void count_elements(t_solong *ptr);
 void init_variables(t_solong *ptr);
 /////
 void   init_map(t_solong *ptr, char *path);

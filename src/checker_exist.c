@@ -78,6 +78,6 @@ void count_elements(t_solong *ptr)
 void check_elements(t_solong *ptr)
 {
     count_elements(ptr);
-    if(ptr->map.collectible != 1 || ptr->map.exit != 1 || ptr->map.player != 1)
+    if(ptr->map.collectible < 1 || ptr->map.exit != 1 || ptr->map.player != 1)
         error("missing elements\n");
 }

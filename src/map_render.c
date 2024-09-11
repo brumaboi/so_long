@@ -22,10 +22,10 @@ void what_img(t_solong *ptr, int i, int j)
     char elem;
 
     elem = ptr->map.map[i][j];
-    if(elem == WALL)
-        img_render(ptr, ptr->wall, i, j);
-    else if(elem == FLOOR)
+    if(elem == FLOOR)
         img_render(ptr, ptr->floor, i, j);
+    else if(elem == WALL)
+        img_render(ptr, ptr->wall, i, j);
     else if(elem == COLLECT)
         img_render(ptr, ptr->collectible, i, j);
     else if(elem == EXIT)

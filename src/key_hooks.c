@@ -24,6 +24,8 @@ void player_movement(t_solong *ptr, int current_x, int current_y)
         return ;
     if (ptr->map.map[current_y][current_x] == WALL)
         return ;
+    if (ptr->map.map[current_y][current_x] == EXIT && ptr->map.collectible > 0)
+        return ;
     if (ptr->map.map[current_y][current_x] == COLLECT)
     {
         ptr->map.collectible--;
@@ -33,8 +35,10 @@ void player_movement(t_solong *ptr, int current_x, int current_y)
     {
         mlx_close_window(ptr->mlx);  // Victory condition
     }
+    ptr->map.map[ptr->map.player_pos.y][ptr->map.player_pos.x] = FLOOR;
     ptr->map.player_pos.x = current_x;
     ptr->map.player_pos.y = current_y;
+    ptr->map.map[current_y][current_x] = PLAYER;
     ptr->steps++;
     map_render(ptr);
 }
