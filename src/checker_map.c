@@ -19,7 +19,7 @@ void init_variables(t_solong *ptr)
     ptr->map.collectible = 0;
     ptr->map.exit = 0;
     ptr->map.player = 0;
-    ptr->map.columns = ft_strlen(ptr->map.map[0]) - 1;
+    ptr->map.columns = ft_strlen(ptr->map.map[0]);
 }
 
 void check_map(t_solong *ptr)

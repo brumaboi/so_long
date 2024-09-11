@@ -44,19 +44,25 @@ void check_walls(t_solong *ptr)
     check_columns(ptr);
 }
 
-static void count_elements(t_solong *ptr)
+void count_elements(t_solong *ptr)
 {
     int i;
     int j;
 
     i = 0;
-    while(i < ptr->map.rows)
+    ptr->map.player_pos.x = -1;
+    ptr->map.player_pos.y = -1;
+    while (i < ptr->map.rows)
     {
         j = 0;
-        while(j < ptr->map.columns)
+        while (j < ptr->map.columns)
         {
             if (ptr->map.map[i][j] == PLAYER)
+            {
                 ptr->map.player++;
+                ptr->map.player_pos.x = j;
+                ptr->map.player_pos.y = i;
+            }
             if (ptr->map.map[i][j] == COLLECT)
                 ptr->map.collectible++;
             if (ptr->map.map[i][j] == EXIT)
@@ -65,6 +71,8 @@ static void count_elements(t_solong *ptr)
         }
         i++;
     }
+    if (ptr->map.player_pos.x == -1 || ptr->map.player_pos.y == -1)
+        error("Player position not found\n");
 }
 
 void check_elements(t_solong *ptr)

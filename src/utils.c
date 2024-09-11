@@ -20,16 +20,19 @@ void	error(char *message)
 
 void player_movement(t_solong *ptr, int current_x, int current_y)
 {
+    if (current_x < 0 || current_x >= ptr->map.columns || current_y < 0 || current_y >= ptr->map.rows)
+        return ;
     if (ptr->map.map[current_y][current_x] == WALL)
         return ;
     if (ptr->map.map[current_y][current_x] == COLLECT)
     {
         ptr->map.collectible--;
-        ptr->steps++;
-        ptr->map.map[current_y][current_x] = FLOOR;  
+        ptr->map.map[current_y][current_x] = FLOOR;
     }
     if (ptr->map.map[current_y][current_x] == EXIT && ptr->map.collectible == 0)
-        mlx_close_window(ptr->mlx); ///change to hit_victory();
+    {
+        mlx_close_window(ptr->mlx);  // Victory condition
+    }
     ptr->map.player_pos.x = current_x;
     ptr->map.player_pos.y = current_y;
     ptr->steps++;

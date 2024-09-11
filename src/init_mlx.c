@@ -22,17 +22,17 @@ void init_mlx(t_solong *ptr)
         error("mlx_new_window failed\n");
 }
 
-t_image    ft_new_img(void *mlx, char *path)
+t_image ft_new_img(void *mlx, char *path)
 {
     t_image img;
     mlx_texture_t *texture;
 
     texture = mlx_load_png(path);
     if (!texture)
-        error("mlx_load_png failed\n");
+        error("Failed to load texture: %s\n");
     img.img_ptr = mlx_texture_to_image(mlx, texture);
     if (!img.img_ptr)
-        error("mlx_texture_to_image failedd\n");
+        error("Failed to convert texture to image\n");
     mlx_delete_texture(texture);
     return (img);
 }
