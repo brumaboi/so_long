@@ -6,7 +6,7 @@
 #    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/20 22:20:12 by sbruma            #+#    #+#              #
-#    Updated: 2024/09/11 14:31:32 by marvin           ###   ########.fr        #
+#    Updated: 2024/09/11 23:03:18 by marvin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,7 @@ SRC 			= $(SRC_DIR)so_long.c \
 				  $(SRC_DIR)checker_map.c \
 				  $(SRC_DIR)checker_exist.c \
 				  $(SRC_DIR)map_render.c \
-				  $(SRC_DIR)utils.c
+				  $(SRC_DIR)key_hooks.c
 				  
 		
 OBJ = $(patsubst $(SRC_DIR)%.c,$(OBJ_DIR)%.o,$(SRC))

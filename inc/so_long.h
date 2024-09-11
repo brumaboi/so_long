@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 22:23:10 by sbruma            #+#    #+#             */
-/*   Updated: 2024/09/11 20:53:33 by marvin           ###   ########.fr       */
+/*   Updated: 2024/09/11 23:05:09 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,16 @@
 # include "../libft/inc/libft.h"
 # include "../MLX42/include/MLX42/MLX42.h"
 
-# define WINDOW_WIDTH 800
-# define WINDOW_HEIGHT 600
+# define WINDOW_WIDTH 1024
+# define WINDOW_HEIGHT 1024
 
 # define FLOOR   '0'
 # define WALL    '1'
 # define PLAYER  'P'
 # define EXIT    'E'
 # define COLLECT 'C'
+
+# define TILE_SIZE 32
 
 # define KEY_W				119
 # define KEY_A				97

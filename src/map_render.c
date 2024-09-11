@@ -14,7 +14,7 @@
 
 void img_render(t_solong *ptr, t_image img, int i, int j)
 {
-    mlx_image_to_window(ptr->mlx, img.img_ptr, j * img.x, i * img.y);
+    mlx_image_to_window(ptr->mlx, img.img_ptr, j * TILE_SIZE, i * TILE_SIZE);
 }
 
 void what_img(t_solong *ptr, int i, int j)

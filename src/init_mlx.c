@@ -33,6 +33,7 @@ t_image ft_new_img(void *mlx, char *path)
     img.img_ptr = mlx_texture_to_image(mlx, texture);
     if (!img.img_ptr)
         error("Failed to convert texture to image\n");
+    mlx_resize_image(img.img_ptr, TILE_SIZE, TILE_SIZE);
     mlx_delete_texture(texture);
     return (img);
 }
