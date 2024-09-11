@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_parse.c                                        :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/10 22:36:21 by marvin            #+#    #+#             */
-/*   Updated: 2024/09/10 22:36:21 by marvin           ###   ########.fr       */
+/*   Created: 2024/09/10 22:36:24 by marvin            #+#    #+#             */
+/*   Updated: 2024/09/10 22:36:24 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,34 @@ void check_walls(t_solong *ptr)
 {
     check_rows(ptr);
     check_columns(ptr);
+}
+
+static void count_elements(t_solong *ptr)
+{
+    size_t i;
+    size_t j;
+
+    i = 0;
+    while(i < ptr->map.rows)
+    {
+        j = 0;
+        while(j < ptr->map.columns)
+        {
+            if (ptr->map.map[i][j] == PLAYER)
+                ptr->map.player++;
+            if (ptr->map.map[i][j] == COLLECT)
+                ptr->map.collectible++;
+            if (ptr->map.map[i][j] == EXIT)
+                ptr->map.exit++;
+            j++;
+        }
+        i++;
+    }
+}
+
+void check_elements(t_solong *ptr)
+{
+    count_params(ptr);
+    if(ptr->map.collectible != 1 || ptr->map.exit != 1 || ptr->map.player != 1)
+        error("missing elements\n");
 }
