@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 22:23:10 by sbruma            #+#    #+#             */
-/*   Updated: 2024/09/11 09:28:36 by marvin           ###   ########.fr       */
+/*   Updated: 2024/09/11 10:12:53 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ typedef struct s_map
     int     collectible;
     int     player;
     t_pos   player_pos;
+    int     exit_reachable;
 }   t_map;
 
 typedef struct s_solong
@@ -81,5 +82,9 @@ void	init_mlx(t_solong *ptr);
 void    check_for_empty_line(const char *map);
 void    read_map(int fd, char ***map, t_solong *ptr);
 
+void check_access(t_solong *ptr)
+void check_elements(t_solong *ptr);
+void check_walls(t_solong *ptr);
+void check_map(t_solong *ptr);
 
 #endif

@@ -23,7 +23,7 @@ int main(int argc, char **argv)
         ptr = malloc(sizeof(t_map));
         init_map(&ptr, argv[1]);
         init_variables(&ptr);
-        map_checker(&ptr);
+        check_map(&ptr);
         init_mlx(&ptr);
         mlx_key_hook(ptr.mlx, key_hook, &ptr);
         mlx_loop(ptr.mlx);
