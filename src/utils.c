@@ -20,11 +20,6 @@ void	error(char *message)
 
 void player_movement(t_solong *ptr, int current_x, int current_y)
 {
-    int prev_x;
-    int prev_y;
-
-    prev_x = ptr->map.player_pos.x;
-    prev_y = ptr->map.player_pos.y;
     if (ptr->map.map[current_y][current_x] == WALL)
         return ;
     if (ptr->map.map[current_y][current_x] == COLLECT)

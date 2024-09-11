@@ -14,10 +14,10 @@
 
 void init_mlx(t_solong *ptr)
 {
-    ptr->mlx = mlx_init(WINDOW_WIDTH, WINDOW_HEIGHT, "so_long", 0);
+    ptr->mlx = mlx_init(WINDOW_WIDTH, WINDOW_HEIGHT, "so_long", true);
     if (!ptr->mlx)
         error("mlx_init failed\n");
-    ptr->win = mlx_new_image(ptr->mlx, ptr->map.columns * 32, ptr->map.rows * 32);
+    ptr->win = mlx_new_image(ptr->mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
     if (!ptr->win)
         error("mlx_new_window failed\n");
 }
@@ -25,10 +25,15 @@ void init_mlx(t_solong *ptr)
 t_image    ft_new_img(void *mlx, char *path)
 {
     t_image img;
+    mlx_texture_t *texture;
 
-    img.xmp_ptr = mlx_xpm_file_to_image(mlx, path, &img.x, &img.y);
-    if (!img.xmp_ptr)
-        error("mlx_xpm_file_to_image failed\n");
+    texture = mlx_load_png(path);
+    if (!texture)
+        error("mlx_load_png failed\n");
+    img.img_ptr = mlx_texture_to_image(mlx, texture);
+    if (!img.img_ptr)
+        error("mlx_texture_to_image failedd\n");
+    mlx_delete_texture(texture);
     return (img);
 }
 
@@ -37,10 +42,10 @@ void init_img(t_solong *ptr)
     void *mlx;
 
     mlx = ptr->mlx;
-    ptr->wall = ft_new_img(mlx, "path");
-    ptr->floor = ft_new_img(mlx, "path");
-    ptr->player = ft_new_img(mlx, "path");
-    ptr->collectible = ft_new_img(mlx, "path");
-    ptr->exit = ft_new_img(mlx, "path");
-    ptr->open_exit = ft_new_img(mlx, "path");
+    ptr->wall = ft_new_img(mlx, "../resources/textusre/wall.png");
+    ptr->floor = ft_new_img(mlx, "../resources/textusre/floor.png");
+    ptr->player = ft_new_img(mlx, "../resources/textusre/player.png");
+    ptr->collectible = ft_new_img(mlx, "../resources/textusre/collectible.png");
+    ptr->exit = ft_new_img(mlx, "../resources/textusre/exit.png");
+    ptr->open_exit = ft_new_img(mlx, "../resources/textusre/open_exit.png");
 }

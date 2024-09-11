@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 22:23:10 by sbruma            #+#    #+#             */
-/*   Updated: 2024/09/11 14:47:03 by marvin           ###   ########.fr       */
+/*   Updated: 2024/09/11 19:15:58 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ typedef struct s_pos
 
 typedef struct s_image
 {
-    void *xmp_ptr;
+    mlx_image_t *img_ptr;
     int  x;
     int  y;
 }   t_image;
@@ -58,7 +58,7 @@ typedef struct s_map
 
 typedef struct s_solong
 {
-    void    *mlx;
+    mlx_t    *mlx;
     void    *win;
     int     steps;
     t_map   map;

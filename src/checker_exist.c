@@ -14,7 +14,7 @@
 
 static void check_rows(t_solong *ptr)
 {
-    size_t i;
+    int i;
 
     i = 0;
     while (i < ptr->map.rows)
@@ -27,7 +27,7 @@ static void check_rows(t_solong *ptr)
 
 static void check_columns(t_solong *ptr)
 {
-    size_t i;
+    int i;
 
     i=0;
     while(i < ptr->map.columns)
@@ -46,8 +46,8 @@ void check_walls(t_solong *ptr)
 
 static void count_elements(t_solong *ptr)
 {
-    size_t i;
-    size_t j;
+    int i;
+    int j;
 
     i = 0;
     while(i < ptr->map.rows)
