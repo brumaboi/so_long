@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 22:23:10 by sbruma            #+#    #+#             */
-/*   Updated: 2024/09/11 10:12:53 by marvin           ###   ########.fr       */
+/*   Updated: 2024/09/11 13:42:24 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ typedef struct s_solong
     t_image back;
     t_image left;
     t_image right;
+    t_image open_exit;
 }   t_solong;
 
 

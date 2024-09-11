@@ -25,6 +25,8 @@ int main(int argc, char **argv)
         init_variables(&ptr);
         check_map(&ptr);
         init_mlx(&ptr);
+        init_img(&ptr);
+        map_render(&ptr);        
         mlx_key_hook(ptr.mlx, key_hook, &ptr);
         mlx_loop(ptr.mlx);
         free(ptr.map.map);

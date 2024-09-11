@@ -12,4 +12,11 @@
 
 #include "../inc/so_long.h"
 
+void map_render(t_solong *ptr)
+{
+    int i;
+    int j;
 
+    i=0;
+    
+}
