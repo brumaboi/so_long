@@ -55,5 +55,4 @@ void map_render(t_solong *ptr)
         }
         i++;
     }
-    //
 }

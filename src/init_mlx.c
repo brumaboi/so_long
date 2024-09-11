@@ -42,10 +42,10 @@ void init_img(t_solong *ptr)
     void *mlx;
 
     mlx = ptr->mlx;
-    ptr->wall = ft_new_img(mlx, "../resources/textusre/wall.png");
-    ptr->floor = ft_new_img(mlx, "../resources/textusre/floor.png");
-    ptr->player = ft_new_img(mlx, "../resources/textusre/player.png");
-    ptr->collectible = ft_new_img(mlx, "../resources/textusre/collectible.png");
-    ptr->exit = ft_new_img(mlx, "../resources/textusre/exit.png");
-    ptr->open_exit = ft_new_img(mlx, "../resources/textusre/open_exit.png");
+    ptr->wall = ft_new_img(mlx, "./resources/textures/wall.png");
+    ptr->floor = ft_new_img(mlx, "./resources/textures/floor.png");
+    ptr->player = ft_new_img(mlx, "./resources/textures/player.png");
+    ptr->collectible = ft_new_img(mlx, "./resources/textures/collectible.png");
+    ptr->exit = ft_new_img(mlx, "./resources/textures/exit.png");
+    ptr->open_exit = ft_new_img(mlx, "./resources/textures/open_exit.png");
 }

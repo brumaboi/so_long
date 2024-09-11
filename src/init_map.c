@@ -25,20 +25,20 @@ static int	check_format(char *path)
 	return (0);
 }
 
-void check_empty_lines(const char **map)
+void check_empty_lines(t_map *map)
 {
     size_t i;
-    size_t len;
+    size_t rows;
 
     i = 0;
-    len = strlen(map[0]);
-    if (map[0][0] == '\n')
+    rows = map->rows;
+    if (map->map[0][0] == '\n')
         error("empty line\n");
-    if (map[len - 1][0] == '\n')
+    if (map->map[rows - 1][0] == '\n')
         error("empty line\n");
-    while (i < len - 1)
+    while (i < rows - 1)
     {
-        if (map[i][0] == '\n' && map[i + 1] && map[i + 1][0] == '\n')
+        if (map->map[i][0] == '\n' && map->map[i + 1][0] == '\n')
             error("empty line\n");
         i++;
     }
@@ -50,16 +50,18 @@ void read_map(int fd, char ***map, t_solong *ptr)
     char *line;
     char *new_tmp;
 
-    
     tmp = ft_strdup("");
+    if (!tmp)
+        error("Memory allocation for tmp failed\n");
     ptr->map.rows = 0;
     line = get_next_line(fd);
-    while(line != NULL)
+    while (line != NULL)
     {
-        new_tmp = malloc(sizeof(char) * (ft_strlen(tmp) + ft_strlen(line) + 2));
+        new_tmp = malloc(sizeof(char) * (ft_strlen(tmp) + ft_strlen(line) + 1));
+        if (!new_tmp)
+            error("Memory allocation failed\n");
         strcpy(new_tmp, tmp);
         strcat(new_tmp, line);
-        strcat(new_tmp, "\n");
         free(tmp);
         tmp = new_tmp;
         free(line);
@@ -67,6 +69,8 @@ void read_map(int fd, char ***map, t_solong *ptr)
         ptr->map.rows++;
     }
     *map = ft_split(tmp, '\n');
+    if (*map == NULL)
+        error("Map splitting failed\n");
     free(tmp);
 }
 
@@ -81,5 +85,5 @@ void   init_map(t_solong *ptr, char *path)
         error("Failed to open file\n");
     read_map(fd, &ptr->map.map, ptr);
     close(fd);
-    check_empty_lines((const char **)ptr->map.map);
+    check_empty_lines(&ptr->map);
 }
