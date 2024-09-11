@@ -18,6 +18,29 @@ void	error(char *message)
 	exit(1);
 }
 
+void player_movement(t_solong *ptr, int current_x, int current_y)
+{
+    int prev_x;
+    int prev_y;
+
+    prev_x = ptr->map.player_pos.x;
+    prev_y = ptr->map.player_pos.y;
+    if (ptr->map.map[current_y][current_x] == WALL)
+        return ;
+    if (ptr->map.map[current_y][current_x] == COLLECT)
+    {
+        ptr->map.collectible--;
+        ptr->steps++;
+        ptr->map.map[current_y][current_x] = FLOOR;  
+    }
+    if (ptr->map.map[current_y][current_x] == EXIT && ptr->map.collectible == 0)
+        mlx_close_window(ptr->mlx); ///change to hit_victory();
+    ptr->map.player_pos.x = current_x;
+    ptr->map.player_pos.y = current_y;
+    ptr->steps++;
+    // render_map(ptr);
+}
+
 void	key_hook(mlx_key_data_t keydata, t_solong *ptr)
 {
 	if (keydata.key == MLX_KEY_ESCAPE)
