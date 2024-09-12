@@ -15,11 +15,13 @@
 static void check_rows(t_solong *ptr)
 {
     int i;
+    size_t row_len;
 
     i = 0;
     while (i < ptr->map.rows)
     {
-        if (ptr->map.map[i][0] != WALL || ptr->map.map[i][ptr->map.columns - 1] != WALL)
+        row_len = ft_strlen(ptr->map.map[i]);
+        if (ptr->map.map[i][0] != WALL || ptr->map.map[i][row_len - 1] != WALL)
             error("map is not surrounded by walls\n");
         i++;
     }
@@ -28,15 +30,20 @@ static void check_rows(t_solong *ptr)
 static void check_columns(t_solong *ptr)
 {
     int i;
+    char top;
+    char bottom;
 
-    i=0;
-    while(i < ptr->map.columns)
+    i = 0;
+    while (i < ptr->map.columns)
     {
-        if (ptr->map.map[0][i] != WALL || ptr->map.map[ptr->map.rows - 1][i] != WALL)
+        top = ptr->map.map[0][i];
+        bottom = ptr->map.map[ptr->map.rows - 1][i];
+        if (top != WALL || bottom != WALL)
             error("map is not surrounded by walls\n");
         i++;
     }
 }
+
 
 void check_walls(t_solong *ptr)
 {
