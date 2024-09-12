@@ -41,6 +41,7 @@ void player_movement(t_solong *ptr, int current_x, int current_y)
     ptr->map.map[current_y][current_x] = PLAYER;
     ptr->steps++;
     map_render(ptr);
+    ft_printf("Steps: %d\n", ptr->steps);
 }
 
 void	key_hook(mlx_key_data_t keydata, void *param)
@@ -48,6 +49,10 @@ void	key_hook(mlx_key_data_t keydata, void *param)
     t_solong *ptr;
 
     ptr = (t_solong *)param;
+    if (keydata.action != MLX_PRESS)
+    {
+        return ;
+    }
 	if (keydata.key == MLX_KEY_ESCAPE)
 		mlx_close_window(ptr->mlx);
 	else if (keydata.key == MLX_KEY_UP || keydata.key == MLX_KEY_W)

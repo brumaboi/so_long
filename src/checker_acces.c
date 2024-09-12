@@ -36,7 +36,7 @@ static void ft_search(t_solong *ptr, int i, int j, int **checked)
     if (ptr->map.map[j][i] == WALL)
         return ;
     checked[j][i] = 1;
-    if(ptr->map.map[j][i] == COLLECT)////change
+    if(ptr->map.map[j][i] == COLLECT)
         ptr->map.collectible_reachable++;
     if(ptr->map.map[j][i] == EXIT && !ptr->map.exit_reachable)
         ptr->map.exit_reachable = 1;
@@ -55,7 +55,7 @@ void check_access(t_solong *ptr)
     ptr->map.exit_reachable = 0;
     ptr->map.collectible_reachable = 0;
     ft_search(ptr, ptr->map.player_pos.x, ptr->map.player_pos.y, checked);
-    if (ptr->map.collectible_reachable != ptr->map.collectible)//////change
+    if (ptr->map.collectible_reachable != ptr->map.collectible)
         error("collectible unreachable\n");
     if(!ptr->map.exit_reachable)
         error("exit unreachable\n");
