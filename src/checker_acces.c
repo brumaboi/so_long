@@ -17,6 +17,8 @@ static void init_checked(int **checked, int columns, int rows, int i)
     if(i == rows)
         return ;
     checked[i] = malloc(sizeof(int) * columns);
+    if (checked[i] == NULL)
+        error("Memory allocation failed\n");
     memset(checked[i], 0, sizeof(int) * columns);
     init_checked(checked, columns, rows, i + 1);
 }

@@ -18,6 +18,19 @@ void	error(char *message)
 	exit(1);
 }
 
+void free_map(char **split)
+{
+    int i;
+    
+    i = 0;
+    while (split[i] != NULL)
+    {
+        free(split[i]);
+        i++;
+    }
+    free(split);
+}
+
 void player_movement(t_solong *ptr, int current_x, int current_y)
 {
     if (current_x < 0 || current_x >= ptr->map.columns || current_y < 0 || current_y >= ptr->map.rows)
@@ -33,7 +46,9 @@ void player_movement(t_solong *ptr, int current_x, int current_y)
     }
     if (ptr->map.map[current_y][current_x] == EXIT && ptr->map.collectible == 0)
     {
-        mlx_close_window(ptr->mlx);  // Victory condition
+        ft_printf("Victory!\n");
+        mlx_close_window(ptr->mlx);
+        return ;
     }
     ptr->map.map[ptr->map.player_pos.y][ptr->map.player_pos.x] = FLOOR;
     ptr->map.player_pos.x = current_x;

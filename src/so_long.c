@@ -28,7 +28,7 @@ int main(int argc, char **argv)
         map_render(&ptr);        
         mlx_key_hook(ptr.mlx, key_hook, &ptr); 
         mlx_loop(ptr.mlx);
-        free(ptr.map.map);
+        free_map(ptr.map.map);
         return(0);
     }
 }

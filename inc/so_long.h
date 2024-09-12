@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 22:23:10 by sbruma            #+#    #+#             */
-/*   Updated: 2024/09/11 23:55:49 by marvin           ###   ########.fr       */
+/*   Updated: 2024/09/12 13:13:48 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,5 +91,6 @@ void map_render(t_solong *ptr);
 /////
 void	key_hook(mlx_key_data_t keydata, void *param);
 void	error(char *message);
+void free_map(char **split);
 
 #endif
