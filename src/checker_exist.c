@@ -56,8 +56,6 @@ void count_elements(t_solong *ptr)
     int j;
 
     i = -1;
-    ptr->map.player_pos.x = -1;
-    ptr->map.player_pos.y = -1;
     while (++i < ptr->map.rows)
     {
         j = -1;
@@ -79,8 +77,6 @@ void count_elements(t_solong *ptr)
             }
         }
     }
-    if (ptr->map.player_pos.x == -1 || ptr->map.player_pos.y == -1)
-        error("Player position not found\n");
 }
 
 void check_elements(t_solong *ptr)
