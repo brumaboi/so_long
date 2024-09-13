@@ -44,7 +44,6 @@ static void check_columns(t_solong *ptr)
     }
 }
 
-
 void check_walls(t_solong *ptr)
 {
     check_rows(ptr);
@@ -56,13 +55,13 @@ void count_elements(t_solong *ptr)
     int i;
     int j;
 
-    i = 0;
+    i = -1;
     ptr->map.player_pos.x = -1;
     ptr->map.player_pos.y = -1;
-    while (i < ptr->map.rows)
+    while (++i < ptr->map.rows)
     {
-        j = 0;
-        while (j < ptr->map.columns)
+        j = -1;
+        while (++j < ptr->map.columns)
         {
             if (ptr->map.map[i][j] == PLAYER)
             {
@@ -74,9 +73,7 @@ void count_elements(t_solong *ptr)
                 ptr->map.collectible++;
             if (ptr->map.map[i][j] == EXIT)
                 ptr->map.exit++;
-            j++;
         }
-        i++;
     }
     if (ptr->map.player_pos.x == -1 || ptr->map.player_pos.y == -1)
         error("Player position not found\n");
@@ -84,6 +81,23 @@ void count_elements(t_solong *ptr)
 
 void check_elements(t_solong *ptr)
 {
+    int i;
+    int j;
+    char element;
+
+    i=0;
+    while (i < ptr->map.rows)
+    {
+        j=0;
+        while(j < ptr->map.columns)
+        {
+            element = ptr->map.map[i][j];
+            if(element != FLOOR && element != WALL && element != PLAYER && element != EXIT && element != COLLECT)
+                error("Invalid element\n");
+            j++;
+        }
+        i++;
+    }
     count_elements(ptr);
     if(ptr->map.collectible < 1 || ptr->map.exit != 1 || ptr->map.player != 1)
         error("missing elements\n");
