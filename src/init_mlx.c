@@ -19,7 +19,9 @@ void init_mlx(t_solong *ptr)
 
     window_width = ptr->map.columns * TILE_SIZE;
     window_height = ptr->map.rows * TILE_SIZE;
-    ptr->mlx = mlx_init(window_width, window_height, "so_long", true);
+    if(window_width > SCREEN_WIDTH || window_height > SCREEN_HEIGHT)
+        error("Map is too big for the screen\n");
+    ptr->mlx = mlx_init(window_width, window_height, "so_long", false);
     if (!ptr->mlx)
         error("mlx_init failed\n");
     ptr->win = mlx_new_image(ptr->mlx, window_width, window_height);

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sbruma <sbruma@student.42.fr>              +#+  +:+       +#+         #
+#    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/13 12:12:14 by sbruma            #+#    #+#              #
-#    Updated: 2024/06/29 16:29:57 by sbruma           ###   ########.fr        #
+#    Updated: 2024/09/13 23:42:22 by marvin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -125,14 +125,10 @@ FTPRINTF_DIR	=	$(SRC_DIR)ft_printf/ft_printf.c \
 
 GNL_DIR			=	$(SRC_DIR)get_next_line/get_next_line.c \
 					$(SRC_DIR)get_next_line/get_next_line_utils.c
-
-MALLOC_DIR		=	$(SRC_DIR)ft_malloc/ft_malloc.c \
-					$(SRC_DIR)ft_malloc/ft_malloc_bad.c \
-					$(SRC_DIR)ft_malloc/globals.c \
-					$(SRC_DIR)ft_malloc/list.c
+					
 					
 # Concatenate all source files
-SRC 			= $(FTIS_DIR) $(FTLST_DIR) $(FTMEM_DIR) $(FTPSC_DIR) $(FTPUT_DIR) $(FTTO_DIR) $(FTSTR_DIR) $(FTTO_DIR) $(FTPRINTF_DIR) $(GNL_DIR) $(MALLOC_DIR)
+SRC 			= $(FTIS_DIR) $(FTLST_DIR) $(FTMEM_DIR) $(FTPSC_DIR) $(FTPUT_DIR) $(FTTO_DIR) $(FTSTR_DIR) $(FTTO_DIR) $(FTPRINTF_DIR) $(GNL_DIR)
 
 # Apply the pattern substitution to each source file in SRC and produce a corresponding list of object files in the OBJ_DIR
 OBJ 			= $(patsubst $(SRC_DIR)%.c,$(OBJ_DIR)%.o,$(SRC))

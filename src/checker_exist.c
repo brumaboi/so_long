@@ -72,7 +72,11 @@ void count_elements(t_solong *ptr)
             if (ptr->map.map[i][j] == COLLECT)
                 ptr->map.collectible++;
             if (ptr->map.map[i][j] == EXIT)
+            {
                 ptr->map.exit++;
+                ptr->map.exit_x = j;
+                ptr->map.exit_y = i;
+            }
         }
     }
     if (ptr->map.player_pos.x == -1 || ptr->map.player_pos.y == -1)
