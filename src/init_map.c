@@ -44,11 +44,22 @@ void check_empty_lines(t_map *map)
     }
 }
 
+char *ft_join(char *tmp, char *line)
+{
+    char *new_tmp;
+
+    new_tmp = malloc(sizeof(char) * (ft_strlen(tmp) + ft_strlen(line) + 1));
+    if (!new_tmp)
+        error("Memory allocation failed\n");
+    ft_strcpy(new_tmp, tmp);
+    ft_strcat(new_tmp, line);
+    free(tmp);
+    return (new_tmp);
+}
 void read_map(int fd, char ***map, t_solong *ptr)
 {
     char *tmp;
     char *line;
-    char *new_tmp;
 
     tmp = ft_strdup("");
     if (!tmp)
@@ -57,13 +68,7 @@ void read_map(int fd, char ***map, t_solong *ptr)
     line = get_next_line(fd);
     while (line != NULL)
     {
-        new_tmp = malloc(sizeof(char) * (ft_strlen(tmp) + ft_strlen(line) + 1));
-        if (!new_tmp)
-            error("Memory allocation failed\n");
-        strcpy(new_tmp, tmp);
-        strcat(new_tmp, line);
-        free(tmp);
-        tmp = new_tmp;
+        tmp = ft_join(tmp, line);
         free(line);
         line = get_next_line(fd);
         ptr->map.rows++;

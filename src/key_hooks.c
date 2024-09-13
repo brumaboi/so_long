@@ -31,6 +31,15 @@ void free_map(char **split)
     free(split);
 }
 
+void ft_victory(t_solong *ptr)
+{
+    ptr->steps++;
+    ft_printf("Steps: %d\n", ptr->steps);
+    ft_printf("Victory!\n");
+    mlx_close_window(ptr->mlx);
+    return ;
+}
+
 void player_movement(t_solong *ptr, int current_x, int current_y)
 {
     if (current_x < 0 || current_x >= ptr->map.columns || current_y < 0 || current_y >= ptr->map.rows)
@@ -46,8 +55,7 @@ void player_movement(t_solong *ptr, int current_x, int current_y)
     }
     if (ptr->map.map[current_y][current_x] == EXIT && ptr->map.collectible == 0)
     {
-        ft_printf("Victory!\n");
-        mlx_close_window(ptr->mlx);
+        ft_victory(ptr);
         return ;
     }
     ptr->map.map[ptr->map.player_pos.y][ptr->map.player_pos.x] = FLOOR;
