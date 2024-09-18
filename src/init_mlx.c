@@ -12,48 +12,48 @@
 
 #include "../inc/so_long.h"
 
-void init_mlx(t_solong *ptr)
+void	init_mlx(t_solong *ptr)
 {
-    int window_width;
-    int window_height;
+	int	window_width;
+	int	window_height;
 
-    window_width = ptr->map.columns * TILE_SIZE;
-    window_height = ptr->map.rows * TILE_SIZE;
-    if(window_width > SCREEN_WIDTH || window_height > SCREEN_HEIGHT)
-        error("Map is too big for the screen\n");
-    ptr->mlx = mlx_init(window_width, window_height, "so_long", false);
-    if (!ptr->mlx)
-        error("mlx_init failed\n");
-    ptr->win = mlx_new_image(ptr->mlx, window_width, window_height);
-    if (!ptr->win)
-        error("mlx_new_window failed\n");
+	window_width = ptr->map.columns * TILE_SIZE;
+	window_height = ptr->map.rows * TILE_SIZE;
+	if (window_width > SCREEN_WIDTH || window_height > SCREEN_HEIGHT)
+		error("Map is too big for the screen\n");
+	ptr->mlx = mlx_init(window_width, window_height, "so_long", false);
+	if (!ptr->mlx)
+		error("mlx_init failed\n");
+	ptr->win = mlx_new_image(ptr->mlx, window_width, window_height);
+	if (!ptr->win)
+		error("mlx_new_window failed\n");
 }
 
-t_image ft_new_img(void *mlx, char *path)
+t_image	ft_new_img(void *mlx, char *path)
 {
-    t_image img;
-    mlx_texture_t *texture;
+	t_image			img;
+	mlx_texture_t	*texture;
 
-    texture = mlx_load_png(path);
-    if (!texture)
-        error("Failed to load texture: %s\n");
-    img.img_ptr = mlx_texture_to_image(mlx, texture);
-    if (!img.img_ptr)
-        error("Failed to convert texture to image\n");
-    mlx_resize_image(img.img_ptr, TILE_SIZE, TILE_SIZE);
-    mlx_delete_texture(texture);
-    return (img);
+	texture = mlx_load_png(path);
+	if (!texture)
+		error("Failed to load texture: %s\n");
+	img.img_ptr = mlx_texture_to_image(mlx, texture);
+	if (!img.img_ptr)
+		error("Failed to convert texture to image\n");
+	mlx_resize_image(img.img_ptr, TILE_SIZE, TILE_SIZE);
+	mlx_delete_texture(texture);
+	return (img);
 }
 
-void init_img(t_solong *ptr)
+void	init_img(t_solong *ptr)
 {
-    void *mlx;
+	void	*mlx;
 
-    mlx = ptr->mlx;
-    ptr->wall = ft_new_img(mlx, "./resources/textures/wall.png");
-    ptr->floor = ft_new_img(mlx, "./resources/textures/floor.png");
-    ptr->player = ft_new_img(mlx, "./resources/textures/player.png");
-    ptr->collectible = ft_new_img(mlx, "./resources/textures/collectible.png");
-    ptr->exit = ft_new_img(mlx, "./resources/textures/exit.png");
-    ptr->open_exit = ft_new_img(mlx, "./resources/textures/open_exit.png");
+	mlx = ptr->mlx;
+	ptr->wall = ft_new_img(mlx, "textures/wall.png");
+	ptr->floor = ft_new_img(mlx, "textures/floor.png");
+	ptr->player = ft_new_img(mlx, "textures/player.png");
+	ptr->collectible = ft_new_img(mlx, "textures/collectible.png");
+	ptr->exit = ft_new_img(mlx, "textures/exit.png");
+	ptr->open_exit = ft_new_img(mlx, "textures/open_exit.png");
 }
